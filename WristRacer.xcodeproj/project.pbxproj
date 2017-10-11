@@ -15,7 +15,60 @@
 		AAE79B091F8E9E4700FE0078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B071F8E9E4700FE0078 /* Main.storyboard */; };
 		AAE79B0B1F8E9E4700FE0078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B0A1F8E9E4700FE0078 /* Assets.xcassets */; };
 		AAE79B0E1F8E9E4700FE0078 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B0C1F8E9E4700FE0078 /* LaunchScreen.storyboard */; };
+		AAE79B1B1F8E9E6100FE0078 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B191F8E9E6100FE0078 /* Interface.storyboard */; };
+		AAE79B1D1F8E9E6100FE0078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B1C1F8E9E6100FE0078 /* Assets.xcassets */; };
+		AAE79B241F8E9E6100FE0078 /* WWR Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAE79B231F8E9E6100FE0078 /* WWR Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AAE79B291F8E9E6100FE0078 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79B281F8E9E6100FE0078 /* InterfaceController.swift */; };
+		AAE79B2B1F8E9E6100FE0078 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B2A1F8E9E6100FE0078 /* GameScene.sks */; };
+		AAE79B2D1F8E9E6100FE0078 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79B2C1F8E9E6100FE0078 /* GameScene.swift */; };
+		AAE79B2F1F8E9E6100FE0078 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79B2E1F8E9E6100FE0078 /* ExtensionDelegate.swift */; };
+		AAE79B311F8E9E6100FE0078 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79B301F8E9E6100FE0078 /* NotificationController.swift */; };
+		AAE79B331F8E9E6100FE0078 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79B321F8E9E6100FE0078 /* ComplicationController.swift */; };
+		AAE79B351F8E9E6100FE0078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B341F8E9E6100FE0078 /* Assets.xcassets */; };
+		AAE79B3A1F8E9E6100FE0078 /* WWR.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AAE79B171F8E9E6100FE0078 /* WWR.app */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AAE79B251F8E9E6100FE0078 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAE79AF21F8E9E4700FE0078 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAE79B221F8E9E6100FE0078;
+			remoteInfo = "WWR Extension";
+		};
+		AAE79B381F8E9E6100FE0078 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAE79AF21F8E9E4700FE0078 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAE79B161F8E9E6100FE0078;
+			remoteInfo = WWR;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AAE79B3E1F8E9E6100FE0078 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AAE79B241F8E9E6100FE0078 /* WWR Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAE79B421F8E9E6100FE0078 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				AAE79B3A1F8E9E6100FE0078 /* WWR.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AAE79AFA1F8E9E4700FE0078 /* WristRacer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WristRacer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,10 +81,31 @@
 		AAE79B0A1F8E9E4700FE0078 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAE79B0D1F8E9E4700FE0078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAE79B0F1F8E9E4700FE0078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAE79B171F8E9E6100FE0078 /* WWR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAE79B1A1F8E9E6100FE0078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		AAE79B1C1F8E9E6100FE0078 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAE79B1E1F8E9E6100FE0078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAE79B231F8E9E6100FE0078 /* WWR Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WWR Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAE79B281F8E9E6100FE0078 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		AAE79B2A1F8E9E6100FE0078 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		AAE79B2C1F8E9E6100FE0078 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		AAE79B2E1F8E9E6100FE0078 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		AAE79B301F8E9E6100FE0078 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		AAE79B321F8E9E6100FE0078 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		AAE79B341F8E9E6100FE0078 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAE79B361F8E9E6100FE0078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAE79B371F8E9E6100FE0078 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AAE79AF71F8E9E4700FE0078 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAE79B201F8E9E6100FE0078 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				AAE79AFC1F8E9E4700FE0078 /* WristRacer */,
+				AAE79B181F8E9E6100FE0078 /* WWR */,
+				AAE79B271F8E9E6100FE0078 /* WWR Extension */,
 				AAE79AFB1F8E9E4700FE0078 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				AAE79AFA1F8E9E4700FE0078 /* WristRacer.app */,
+				AAE79B171F8E9E6100FE0078 /* WWR.app */,
+				AAE79B231F8E9E6100FE0078 /* WWR Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +151,32 @@
 			path = WristRacer;
 			sourceTree = "<group>";
 		};
+		AAE79B181F8E9E6100FE0078 /* WWR */ = {
+			isa = PBXGroup;
+			children = (
+				AAE79B191F8E9E6100FE0078 /* Interface.storyboard */,
+				AAE79B1C1F8E9E6100FE0078 /* Assets.xcassets */,
+				AAE79B1E1F8E9E6100FE0078 /* Info.plist */,
+			);
+			path = WWR;
+			sourceTree = "<group>";
+		};
+		AAE79B271F8E9E6100FE0078 /* WWR Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AAE79B281F8E9E6100FE0078 /* InterfaceController.swift */,
+				AAE79B2A1F8E9E6100FE0078 /* GameScene.sks */,
+				AAE79B2C1F8E9E6100FE0078 /* GameScene.swift */,
+				AAE79B2E1F8E9E6100FE0078 /* ExtensionDelegate.swift */,
+				AAE79B301F8E9E6100FE0078 /* NotificationController.swift */,
+				AAE79B321F8E9E6100FE0078 /* ComplicationController.swift */,
+				AAE79B341F8E9E6100FE0078 /* Assets.xcassets */,
+				AAE79B361F8E9E6100FE0078 /* Info.plist */,
+				AAE79B371F8E9E6100FE0078 /* PushNotificationPayload.apns */,
+			);
+			path = "WWR Extension";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,15 +187,51 @@
 				AAE79AF61F8E9E4700FE0078 /* Sources */,
 				AAE79AF71F8E9E4700FE0078 /* Frameworks */,
 				AAE79AF81F8E9E4700FE0078 /* Resources */,
+				AAE79B421F8E9E6100FE0078 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AAE79B391F8E9E6100FE0078 /* PBXTargetDependency */,
 			);
 			name = WristRacer;
 			productName = WristRacer;
 			productReference = AAE79AFA1F8E9E4700FE0078 /* WristRacer.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AAE79B161F8E9E6100FE0078 /* WWR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAE79B3F1F8E9E6100FE0078 /* Build configuration list for PBXNativeTarget "WWR" */;
+			buildPhases = (
+				AAE79B151F8E9E6100FE0078 /* Resources */,
+				AAE79B3E1F8E9E6100FE0078 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAE79B261F8E9E6100FE0078 /* PBXTargetDependency */,
+			);
+			name = WWR;
+			productName = WWR;
+			productReference = AAE79B171F8E9E6100FE0078 /* WWR.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		AAE79B221F8E9E6100FE0078 /* WWR Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAE79B3B1F8E9E6100FE0078 /* Build configuration list for PBXNativeTarget "WWR Extension" */;
+			buildPhases = (
+				AAE79B1F1F8E9E6100FE0078 /* Sources */,
+				AAE79B201F8E9E6100FE0078 /* Frameworks */,
+				AAE79B211F8E9E6100FE0078 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WWR Extension";
+			productName = "WWR Extension";
+			productReference = AAE79B231F8E9E6100FE0078 /* WWR Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -104,6 +244,14 @@
 				ORGANIZATIONNAME = "Feihong Zhao";
 				TargetAttributes = {
 					AAE79AF91F8E9E4700FE0078 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					AAE79B161F8E9E6100FE0078 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					AAE79B221F8E9E6100FE0078 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 					};
@@ -123,6 +271,8 @@
 			projectRoot = "";
 			targets = (
 				AAE79AF91F8E9E4700FE0078 /* WristRacer */,
+				AAE79B161F8E9E6100FE0078 /* WWR */,
+				AAE79B221F8E9E6100FE0078 /* WWR Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -140,6 +290,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AAE79B151F8E9E6100FE0078 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE79B1D1F8E9E6100FE0078 /* Assets.xcassets in Resources */,
+				AAE79B1B1F8E9E6100FE0078 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAE79B211F8E9E6100FE0078 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE79B351F8E9E6100FE0078 /* Assets.xcassets in Resources */,
+				AAE79B2B1F8E9E6100FE0078 /* GameScene.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -153,7 +321,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AAE79B1F1F8E9E6100FE0078 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAE79B2D1F8E9E6100FE0078 /* GameScene.swift in Sources */,
+				AAE79B291F8E9E6100FE0078 /* InterfaceController.swift in Sources */,
+				AAE79B331F8E9E6100FE0078 /* ComplicationController.swift in Sources */,
+				AAE79B311F8E9E6100FE0078 /* NotificationController.swift in Sources */,
+				AAE79B2F1F8E9E6100FE0078 /* ExtensionDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AAE79B261F8E9E6100FE0078 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAE79B221F8E9E6100FE0078 /* WWR Extension */;
+			targetProxy = AAE79B251F8E9E6100FE0078 /* PBXContainerItemProxy */;
+		};
+		AAE79B391F8E9E6100FE0078 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAE79B161F8E9E6100FE0078 /* WWR */;
+			targetProxy = AAE79B381F8E9E6100FE0078 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AAE79B071F8E9E4700FE0078 /* Main.storyboard */ = {
@@ -170,6 +363,14 @@
 				AAE79B0D1F8E9E4700FE0078 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AAE79B191F8E9E6100FE0078 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAE79B1A1F8E9E6100FE0078 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -312,6 +513,80 @@
 			};
 			name = Release;
 		};
+		AAE79B3C1F8E9E6100FE0078 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2C8H3W834D;
+				INFOPLIST_FILE = "WWR Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.feihogndesign.www.WristRacer.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		AAE79B3D1F8E9E6100FE0078 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2C8H3W834D;
+				INFOPLIST_FILE = "WWR Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.feihogndesign.www.WristRacer.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
+		AAE79B401F8E9E6100FE0078 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2C8H3W834D;
+				IBSC_MODULE = WWR_Extension;
+				INFOPLIST_FILE = WWR/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.feihogndesign.www.WristRacer.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Debug;
+		};
+		AAE79B411F8E9E6100FE0078 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2C8H3W834D;
+				IBSC_MODULE = WWR_Extension;
+				INFOPLIST_FILE = WWR/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.feihogndesign.www.WristRacer.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -329,6 +604,24 @@
 			buildConfigurations = (
 				AAE79B131F8E9E4700FE0078 /* Debug */,
 				AAE79B141F8E9E4700FE0078 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAE79B3B1F8E9E6100FE0078 /* Build configuration list for PBXNativeTarget "WWR Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE79B3C1F8E9E6100FE0078 /* Debug */,
+				AAE79B3D1F8E9E6100FE0078 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAE79B3F1F8E9E6100FE0078 /* Build configuration list for PBXNativeTarget "WWR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAE79B401F8E9E6100FE0078 /* Debug */,
+				AAE79B411F8E9E6100FE0078 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
