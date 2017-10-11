@@ -49,16 +49,14 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         //            }
         //            print(skInterface.scene?.name)
         //        }
-        
     }
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
-        
         // Straighten car if crown rotation slowing down
         if rotationalDelta > -0.1 && rotationalDelta < 0.1 {
             scene?.player?.run((scene?.zAction)!)
         }
-        
+        scene?.player?.position.x += CGFloat(rotationalDelta * 10)
         scene?.player?.zRotation -= CGFloat(rotationalDelta)
     }
     
