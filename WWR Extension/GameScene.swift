@@ -9,39 +9,56 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    
-    private var spinnyNode : SKShapeNode?
+    var player:SKSpriteNode?
+    var road:SKShapeNode?
+    var strip:SKShapeNode?
+    var zAction:SKAction?
     
     override func sceneDidLoad() {
-        
-        if let label = self.childNode(withName: "//helloLabel") as? SKLabelNode {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-        
-        let w = (self.size.width + self.size.height) * 0.05
-        let spinnyNode = SKShapeNode(rectOf: CGSize(width: w, height: w), cornerRadius: w * 0.3)
-        
-        spinnyNode.position = CGPoint(x: 0.0, y: 0.0)
-        spinnyNode.strokeColor = UIColor.red
-        spinnyNode.lineWidth = 8.0
-            
-        spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                          SKAction.fadeOut(withDuration: 0.5),
-                                          SKAction.removeFromParent()]))
-        
-        spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: 6.28, duration: 1)))
-        
-        self.run(SKAction.repeatForever(SKAction.sequence([SKAction.wait(forDuration: 2.0),
-                                                           SKAction.run({
-                                                            let n = spinnyNode.copy() as! SKShapeNode
-                                                            self.addChild(n)
-                                                           })])))
+        setUp()
+        createRoad()
     }
     
-    //Hello - Tony
+    func setUp() {
+        let rotationRange = SKRange(lowerLimit: CGFloat(-0.7853981634), upperLimit: CGFloat(0.7853981634))
+        let rotationConstraint = SKConstraint.zRotation(rotationRange)
+        
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        player = SKSpriteNode(imageNamed: "go-kart")
+        player?.position = CGPoint(x: 0, y: -100)
+        player?.zPosition = 2
+        player?.setScale(2)
+        
+        player?.constraints = [rotationConstraint]
+        zAction = SKAction.rotate(toAngle: 0, duration: 0.1)
+        
+        self.addChild(player!)
+    }
+    
+    func createRoad() {
+        
+        road = SKShapeNode(rectOf: CGSize(width: (size.width - 30), height: size.height))
+        road?.strokeColor = SKColor.orange
+        road?.lineWidth = 5
+        road?.fillColor = SKColor.gray
+        road?.name = "road"
+        road?.position.x = 0
+        road?.position.y = 0
+        
+        strip = SKShapeNode(rectOf: CGSize(width: 10, height: 30))
+        strip?.strokeColor = SKColor.white
+        strip?.fillColor = SKColor.white
+        strip?.alpha = 0.4
+        strip?.name = "Strip"
+        strip?.zPosition = 10
+        strip?.position.x = 0
+        strip?.position.y = CGFloat(self.frame.maxY)
+        
+        addChild(road!)
+    }
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        
     }
 }
+
