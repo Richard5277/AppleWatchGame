@@ -9,8 +9,7 @@
 import WatchKit
 import Foundation
 
-
-class InterfaceController: WKInterfaceController, WKCrownDelegate {
+class GameInterfaceController: WKInterfaceController, WKCrownDelegate {
 
     @IBOutlet var skInterface: WKInterfaceSKScene!
     let scene = GameScene(fileNamed: "GameScene")
@@ -48,20 +47,20 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     }
     
     @IBAction func handleTap(_ sender: Any) {
-                // Load the SKScene from 'GameScene.sks'
-                if skInterface.scene?.name == "Main Menu" {
-                    if let scene = GameScene(fileNamed: "GameScene") {
-                        // Set the scale mode to scale to fit the window
-                        scene.scaleMode = .aspectFill
-                        scene.name = "Game Scene"
-                        // Present the scene
-                        self.skInterface.presentScene(scene)
-        
-                        // Use a value that will maintain a consistent frame rate
-                        self.skInterface.preferredFramesPerSecond = 30
-                    }
-                    print(skInterface.scene?.name ?? "MAIN")
-                }
+//                // Load the SKScene from 'GameScene.sks'
+//                if skInterface.scene?.name == "Main Menu" {
+//                    if let scene = GameScene(fileNamed: "GameScene") {
+//                        // Set the scale mode to scale to fit the window
+//                        scene.scaleMode = .aspectFill
+//                        scene.name = "Game Scene"
+//                        // Present the scene
+//                        self.skInterface.presentScene(scene)
+//
+//                        // Use a value that will maintain a consistent frame rate
+//                        self.skInterface.preferredFramesPerSecond = 30
+//                    }
+//                    print(skInterface.scene?.name ?? "MAIN")
+//                }
     }
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
