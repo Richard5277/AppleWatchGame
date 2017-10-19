@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     var player:SKSpriteNode?
     var road:SKShapeNode?
     var zAction:SKAction?
@@ -17,6 +17,9 @@ class GameScene: SKScene {
         setUp()
         createRoad()
         Timer.scheduledTimer(timeInterval: TimeInterval(0.2), target: self, selector: #selector(createRoadStrips), userInfo: nil, repeats: true)
+        
+        createTraffic()
+        Timer.scheduledTimer(timeInterval: TimeInterval(5), target: self, selector: #selector(createTraffic), userInfo: nil, repeats: true)
     }
     
     func setUp() {
@@ -45,6 +48,30 @@ class GameScene: SKScene {
         road?.position.x = 0
         road?.position.y = 0
         addChild(road!)
+        
+    }
+    
+    @objc func createTraffic() {
+        
+        //random number to determine if traffic is in lane 1, 2, or 3
+        let randLane = arc4random_uniform(4)
+        
+        let car = SKShapeNode(circleOfRadius: 10)
+        car.fillColor = SKColor.blue
+        car.name = "traffic"
+        car.zPosition = 2
+        
+        car.position.y = CGFloat(self.frame.maxY)
+        
+        if randLane == 1 {
+            car.position.x = -100
+        } else if randLane == 2 {
+            car.position.x = 0
+        } else if randLane == 3 {
+            car.position.x = 100
+        }
+
+        addChild(car)
         
     }
     
@@ -82,6 +109,13 @@ class GameScene: SKScene {
         })
     }
     
+    func animateTraffic() {
+        enumerateChildNodes(withName: "traffic", using: { (traffic, stop) in
+            let car = traffic as! SKShapeNode
+            car.position.y -= 10
+        })
+    }
+    
     func removeItems() {
         for child in children {
             if child.position.y < -self.size.height - 100 {
@@ -92,6 +126,7 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         showRoadStrips()
+        animateTraffic()
     }
 }
 

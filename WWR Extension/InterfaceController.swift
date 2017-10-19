@@ -25,6 +25,7 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         // Set the scale mode to scale to fit the window
         scene?.scaleMode = .aspectFill
         scene?.name = "Game Scene"
+        
         // Present the scene
         self.skInterface.presentScene(scene)
         
