@@ -9,18 +9,26 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    
+    var totalNodes: Int = 0
+    
     var player:SKSpriteNode?
     var road:SKShapeNode?
     var zAction:SKAction?
     
+    var ball: SKShapeNode?
+    
     override func sceneDidLoad() {
+        
+        self.physicsWorld.contactDelegate = self
+        
         setUp()
         createRoad()
-        Timer.scheduledTimer(timeInterval: TimeInterval(0.2), target: self, selector: #selector(createRoadStrips), userInfo: nil, repeats: true)
         
-        createTraffic()
+        Timer.scheduledTimer(timeInterval: TimeInterval(0.5), target: self, selector: #selector(createRoadStrips), userInfo: nil, repeats: true)
+        
         Timer.scheduledTimer(timeInterval: TimeInterval(5), target: self, selector: #selector(createTraffic), userInfo: nil, repeats: true)
-    }
+        }
     
     func setUp() {
         let rotationRange = SKRange(lowerLimit: CGFloat(-0.7853981634), upperLimit: CGFloat(0.7853981634))
@@ -28,25 +36,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         player = SKSpriteNode(imageNamed: "go-kart")
-        player?.position = CGPoint(x: 0, y: -100)
+        player?.name = "player"
+        player?.position = CGPoint(x: 0, y: -50)
         player?.zPosition = 10
-        player?.setScale(2)
+        player?.setScale(1)
         
         player?.constraints = [rotationConstraint]
         zAction = SKAction.rotate(toAngle: 0, duration: 0.1)
+        
+        // adding plyaer physics body
+        player?.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: (player?.size.width)!, height: (player?.size.height)!))
+        player?.physicsBody?.affectedByGravity = false
+        player?.physicsBody?.isDynamic = false
+        player?.physicsBody?.contactTestBitMask = 1
         
         self.addChild(player!)
     }
     
     func createRoad() {
         
-        road = SKShapeNode(rectOf: CGSize(width: size.width, height: size.height))
-        road?.strokeColor = SKColor.orange
-        road?.lineWidth = 5
+        road = SKShapeNode(rectOf: CGSize(width: self.size.width, height: self.size.height))
+//        road?.strokeColor = SKColor.orange
+//        road?.lineWidth = 5
         road?.fillColor = SKColor.gray
         road?.name = "road"
         road?.position.x = 0
         road?.position.y = 0
+        
+//        road?.physicsBody?.density
+        
         addChild(road!)
         
     }
@@ -55,24 +73,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //random number to determine if traffic is in lane 1, 2, or 3
         let randLane = arc4random_uniform(4)
+        print("Lane Number ======== \(randLane)")
         
-        let car = SKShapeNode(circleOfRadius: 10)
-        car.fillColor = SKColor.blue
-        car.name = "traffic"
-        car.zPosition = 2
+        ball = SKShapeNode(circleOfRadius: 10)
+        ball?.fillColor = SKColor.blue
+        ball?.name = "ball"
+        ball?.zPosition = 2
         
-        car.position.y = CGFloat(self.frame.maxY)
+        ball?.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        ball?.physicsBody?.affectedByGravity = false
+//        ball?.physicsBody!.contactTestBitMask = (ball?.physicsBody!.collisionBitMask)!
+        ball?.physicsBody?.contactTestBitMask = 1
+
+        ball?.position.y = CGFloat(self.frame.maxY)
         
         if randLane == 1 {
-            car.position.x = -100
+            ball?.position.x = -50
         } else if randLane == 2 {
-            car.position.x = 0
+            ball?.position.x = 0
         } else if randLane == 3 {
-            car.position.x = 100
+            ball?.position.x = 50
         }
-
-        addChild(car)
         
+        addChild(ball!)
+        self.totalNodes += 1
     }
     
     @objc func createRoadStrips() {
@@ -85,6 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         leftStrip.position.x = -CGFloat(self.frame.maxX / 3)
         leftStrip.position.y = CGFloat(self.frame.maxY)
         addChild(leftStrip)
+        self.totalNodes += 1
         
         let rightStrip = SKShapeNode(rectOf: CGSize(width: 10, height: 40))
         rightStrip.strokeColor = SKColor.white
@@ -95,6 +120,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rightStrip.position.x = CGFloat(self.frame.maxX / 3)
         rightStrip.position.y = CGFloat(self.frame.maxY)
         addChild(rightStrip)
+        self.totalNodes += 1
     }
     
     func showRoadStrips() {
@@ -110,23 +136,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func animateTraffic() {
-        enumerateChildNodes(withName: "traffic", using: { (traffic, stop) in
-            let car = traffic as! SKShapeNode
-            car.position.y -= 10
+        enumerateChildNodes(withName: "ball", using: { (traffic, stop) in
+            let ball = traffic as! SKShapeNode
+            ball.position.y -= 10
         })
     }
     
     func removeItems() {
-        for child in children {
-            if child.position.y < -self.size.height - 100 {
+        for child in self.children {
+            if child.position.y < -self.size.height - 20 {
                 child.removeFromParent()
+                self.totalNodes -= 1
             }
         }
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        print("Contact")
+        
+        guard let nodeA = contact.bodyA.node else { return }
+        guard let nodeB = contact.bodyB.node else { return }
+        
+        print("NodeA : \(String(describing: nodeA.name))")
+        print("NodeB : \(String(describing: nodeB.name))")
+        
+        if nodeA.name == "ball" {
+            destroyBall(nodeA)
+        } else if nodeB.name == "ball" {
+            destroyBall(nodeB)
+        }
+    }
+    
+    func destroyBall(_ node: SKNode) {
+        node.removeFromParent()
     }
     
     override func update(_ currentTime: TimeInterval) {
         showRoadStrips()
         animateTraffic()
+        removeItems()
+//        print("Total Nodes ::: \(self.totalNodes)")
     }
 }
 

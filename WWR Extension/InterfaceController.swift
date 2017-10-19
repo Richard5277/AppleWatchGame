@@ -21,10 +21,22 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         // Configure interface objects here.
         
         // Load the SKScene from 'GameScene.sks'
+        // Load the SKScene from 'GameScene.sks'
+        if let scene = GameScene(fileNamed: "GameScene") {
+            
+            // Set the scale mode to scale to fit the window
+            scene.scaleMode = .aspectFill
+            
+            // Present the scene
+            self.skInterface.presentScene(scene)
+            
+            // Use a value that will maintain a consistent frame rate
+            self.skInterface.preferredFramesPerSecond = 30
+        }
         
         // Set the scale mode to scale to fit the window
         scene?.scaleMode = .aspectFill
-        scene?.name = "Game Scene"
+        scene?.name = "GameScene"
         
         // Present the scene
         self.skInterface.presentScene(scene)
@@ -36,20 +48,20 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     }
     
     @IBAction func handleTap(_ sender: Any) {
-        //        // Load the SKScene from 'GameScene.sks'
-        //        if skInterface.scene?.name == "Main Menu" {
-        //            if let scene = GameScene(fileNamed: "GameScene") {
-        //                // Set the scale mode to scale to fit the window
-        //                scene.scaleMode = .aspectFill
-        //                scene.name = "Game Scene"
-        //                // Present the scene
-        //                self.skInterface.presentScene(scene)
-        //
-        //                // Use a value that will maintain a consistent frame rate
-        //                self.skInterface.preferredFramesPerSecond = 30
-        //            }
-        //            print(skInterface.scene?.name)
-        //        }
+                // Load the SKScene from 'GameScene.sks'
+                if skInterface.scene?.name == "Main Menu" {
+                    if let scene = GameScene(fileNamed: "GameScene") {
+                        // Set the scale mode to scale to fit the window
+                        scene.scaleMode = .aspectFill
+                        scene.name = "Game Scene"
+                        // Present the scene
+                        self.skInterface.presentScene(scene)
+        
+                        // Use a value that will maintain a consistent frame rate
+                        self.skInterface.preferredFramesPerSecond = 30
+                    }
+                    print(skInterface.scene?.name ?? "MAIN")
+                }
     }
     
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
