@@ -17,6 +17,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var zAction:SKAction?
     
     var ball: SKShapeNode?
+    var leftWall: SKShapeNode?
+    var rightWall: SKShapeNode?
     
     override func sceneDidLoad() {
         
@@ -24,6 +26,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         setUp()
         createRoad()
+        
+        createWalls()
         
         Timer.scheduledTimer(timeInterval: TimeInterval(0.5), target: self, selector: #selector(createRoadStrips), userInfo: nil, repeats: true)
         
@@ -47,17 +51,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // adding plyaer physics body
         player?.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: (player?.size.width)!, height: (player?.size.height)!))
         player?.physicsBody?.affectedByGravity = false
-        player?.physicsBody?.isDynamic = false
+        player?.physicsBody?.isDynamic = true
         player?.physicsBody?.contactTestBitMask = 1
         
         self.addChild(player!)
     }
     
     func createRoad() {
-        
         road = SKShapeNode(rectOf: CGSize(width: self.size.width, height: self.size.height))
-//        road?.strokeColor = SKColor.orange
-//        road?.lineWidth = 5
+//        road?.strokeColor = SKColor.green
+        road?.lineWidth = 1
         road?.fillColor = SKColor.gray
         road?.name = "road"
         road?.position.x = 0
@@ -67,6 +70,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(road!)
         
+    }
+    
+    func createWalls() {
+        
+        // MARK: - right wall
+        leftWall = SKShapeNode(rect: CGRect(x: -(self.size.width/2), y: -self.size.height/2, width: 5, height: self.size.height))
+//        leftWall?.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 5, height: self.size.height))
+        leftWall?.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 5, height: self.size.height), center: CGPoint(x: 0, y: 0))
+        leftWall?.zPosition = 10
+        leftWall?.name = "leftWall"
+        leftWall?.fillColor = .red
+        leftWall?.physicsBody?.isDynamic = false
+        leftWall?.physicsBody?.affectedByGravity = false
+        leftWall?.physicsBody?.allowsRotation = false
+        leftWall?.physicsBody?.contactTestBitMask = 1
+        
+        // MARK: - right wall
+        rightWall = SKShapeNode(rect: CGRect(x: self.size.width/2 - 5, y: -self.size.height/2, width: 5, height: self.size.height))
+        rightWall?.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 5, height: self.size.height), center: CGPoint(x: 0, y: 0))
+        rightWall?.name = "rightWall"
+        rightWall?.zPosition = 10
+        rightWall?.fillColor = .red
+        rightWall?.physicsBody?.isDynamic = false
+        rightWall?.physicsBody?.affectedByGravity = false
+        rightWall?.physicsBody?.allowsRotation = false
+        rightWall?.physicsBody?.contactTestBitMask = 1
+        
+        addChild(leftWall!)
+        addChild(rightWall!)
     }
     
     @objc func createTraffic() {
@@ -82,7 +114,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         ball?.physicsBody = SKPhysicsBody(circleOfRadius: 10)
         ball?.physicsBody?.affectedByGravity = false
-//        ball?.physicsBody!.contactTestBitMask = (ball?.physicsBody!.collisionBitMask)!
         ball?.physicsBody?.contactTestBitMask = 1
 
         ball?.position.y = CGFloat(self.frame.maxY)
@@ -153,13 +184,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
-        print("Contact")
-        
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         
-        print("NodeA : \(String(describing: nodeA.name))")
-        print("NodeB : \(String(describing: nodeB.name))")
+        print("👀 Contact NodeA : \(String(describing: nodeA.name))")
+        print("👀 Contact NodeB : \(String(describing: nodeB.name))")
         
         if nodeA.name == "ball" {
             destroyBall(nodeA)
@@ -179,13 +208,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        print("Total Nodes ::: \(self.totalNodes)")
     }
 }
-
-
-
-
-
-
-
-
 
 
