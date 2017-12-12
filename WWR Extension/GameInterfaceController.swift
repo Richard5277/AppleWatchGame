@@ -16,10 +16,7 @@ class GameInterfaceController: WKInterfaceController, WKCrownDelegate {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
-        // Configure interface objects here.
-        
-        // Load the SKScene from 'GameScene.sks'
+                
         // Load the SKScene from 'GameScene.sks'
         if let scene = GameScene(fileNamed: "GameScene") {
             
