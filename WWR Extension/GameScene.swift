@@ -14,11 +14,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player:SKSpriteNode?
     var road:SKShapeNode?
+    var distLabel:SKLabelNode?
     var zAction:SKAction?
     
-    var ball: SKShapeNode?
+    var ball: SKSpriteNode?
     var leftWall: SKShapeNode?
     var rightWall: SKShapeNode?
+    
+    let startTime = Date()
     
     override func sceneDidLoad() {
         
@@ -31,7 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Timer.scheduledTimer(timeInterval: TimeInterval(0.5), target: self, selector: #selector(createRoadStrips), userInfo: nil, repeats: true)
         
-        Timer.scheduledTimer(timeInterval: TimeInterval(5), target: self, selector: #selector(createTraffic), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: TimeInterval(generateRandomNumber(min: 3, max: 5)), target: self, selector: #selector(createObstacles), userInfo: nil, repeats: true)
         }
     
     func setUp() {
@@ -39,11 +42,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let rotationConstraint = SKConstraint.zRotation(rotationRange)
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        player = SKSpriteNode(imageNamed: "go-kart")
+        player = SKSpriteNode(imageNamed: "blackf1")
         player?.name = "player"
         player?.position = CGPoint(x: 0, y: -50)
         player?.zPosition = 10
-        player?.setScale(1)
+        player?.setScale(0.8)
         
         player?.constraints = [rotationConstraint]
         zAction = SKAction.rotate(toAngle: 0, duration: 0.1)
@@ -55,6 +58,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player?.physicsBody?.contactTestBitMask = 1
         
         self.addChild(player!)
+        
+        distLabel = SKLabelNode()
+        distLabel?.text = "0km"
+        distLabel?.fontName = "HelveticaNeue-Bold"
+        distLabel?.fontSize = 11
+        distLabel?.fontColor = SKColor.white
+        distLabel?.position = CGPoint(x: frame.midX, y: -(frame.height / 2) + 5)
+        distLabel?.alpha = 0.8
+        distLabel?.zPosition = 10
+        
+        self.addChild(distLabel!)
     }
     
     func createRoad() {
@@ -101,21 +115,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(rightWall!)
     }
     
-    @objc func createTraffic() {
+    @objc func createObstacles() {
         
         //random number to determine if traffic is in lane 1, 2, or 3
         let randLane = arc4random_uniform(4)
         print("Lane Number ======== \(randLane)")
         
-        ball = SKShapeNode(circleOfRadius: 10)
-        ball?.fillColor = SKColor.blue
+        var obstacles = ["Boulder", "lava1", "oilspill"]
+        let randObstacle = Int(arc4random_uniform(3))
+        
+        ball = SKSpriteNode(imageNamed: obstacles[randObstacle])
         ball?.name = "ball"
+        ball?.size = CGSize(width: 25, height: 25)
         ball?.zPosition = 2
         
         ball?.physicsBody = SKPhysicsBody(circleOfRadius: 10)
         ball?.physicsBody?.affectedByGravity = false
         ball?.physicsBody?.contactTestBitMask = 1
-
+        
         ball?.position.y = CGFloat(self.frame.maxY)
         
         if randLane == 1 {
@@ -168,7 +185,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func animateTraffic() {
         enumerateChildNodes(withName: "ball", using: { (traffic, stop) in
-            let ball = traffic as! SKShapeNode
+            let ball = traffic as! SKSpriteNode
             ball.position.y -= 10
         })
     }
@@ -201,10 +218,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         node.removeFromParent()
     }
     
+    func updateDistance() {
+        let distText = round(startTime.timeIntervalSinceNow, toNearest: 0.01)
+        distLabel?.text = "\(-distText) km"
+    }
+    
+    func round(_ value: Double, toNearest: Double) -> Double {
+        return Darwin.round(value / toNearest) * toNearest
+    }
+    
+    func generateRandomNumber(min: Int, max: Int) -> Int {
+        let randomNum = Int(arc4random_uniform(UInt32(max) - UInt32(min)) + UInt32(min))
+        return randomNum
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         showRoadStrips()
         animateTraffic()
         removeItems()
+        updateDistance()
 //        print("Total Nodes ::: \(self.totalNodes)")
     }
 }
