@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13196" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -17,7 +17,7 @@
                         <label width="116" height="56" alignment="center" text="Wrist Racer" textAlignment="center" id="PwO-gS-ras"/>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Start Game" id="wte-f5-35N">
                             <connections>
-                                <segue destination="9lt-7F-HSU" kind="push" id="fo0-9P-kXk"/>
+                                <segue destination="9lt-7F-HSU" kind="modal" id="fo0-9P-kXk"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Garage" id="6rA-SR-yQh"/>
@@ -34,7 +34,15 @@
             <objects>
                 <controller id="9lt-7F-HSU" customClass="GameInterfaceController" customModule="WWR_Extension">
                     <items>
-                        <spriteKitScene alignment="left" id="eh2-bW-rMT"/>
+                        <spriteKitScene alignment="left" id="eh2-bW-rMT">
+                            <gestureRecognizers>
+                                <tapGestureRecognizer id="f18-ve-FCk">
+                                    <connections>
+                                        <action selector="startOver:" destination="9lt-7F-HSU" id="wfe-9s-C1X"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                        </spriteKitScene>
                     </items>
                 </controller>
             </objects>

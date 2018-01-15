@@ -16,7 +16,35 @@ class GameInterfaceController: WKInterfaceController, WKCrownDelegate {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-                
+        
+//        NotificationCenter.default.addObserver(forName: .startOver, object: nil, queue: .current) { (notification) in
+//            print(" 😈 😈 😈 receiving notification >> starting the game over")
+//            // Load the SKScene from 'GameScene.sks'
+//            if let scene = GameScene(fileNamed: "GameScene") {
+//
+//                // Set the scale mode to scale to fit the window
+//                scene.scaleMode = .aspectFill
+//
+//                // Present the scene
+//                self.skInterface.presentScene(scene)
+//
+//                // Use a value that will maintain a consistent frame rate
+//                self.skInterface.preferredFramesPerSecond = 30
+//            }
+//
+//            // Set the scale mode to scale to fit the window
+//            self.scene?.scaleMode = .aspectFill
+//            self.scene?.name = "GameScene"
+//
+//            // Present the scene
+//            self.skInterface.presentScene(self.scene)
+//
+//            // Use a value that will maintain a consistent frame rate
+//            self.skInterface.preferredFramesPerSecond = 30
+//
+//            self.crownSequencer.delegate = self
+//        }
+        
         // Load the SKScene from 'GameScene.sks'
         if let scene = GameScene(fileNamed: "GameScene") {
             
@@ -41,6 +69,13 @@ class GameInterfaceController: WKInterfaceController, WKCrownDelegate {
         self.skInterface.preferredFramesPerSecond = 30
         
         crownSequencer.delegate = self
+        
+        
+    }
+    @IBAction func startOver(_ sender: Any) {
+        print("😈 😈 tap tap")
+        self.dismiss()
+        self.dismissAddPassesController()
     }
     
     @IBAction func handleTap(_ sender: Any) {
