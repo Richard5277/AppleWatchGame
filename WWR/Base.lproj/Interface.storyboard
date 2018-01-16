@@ -41,6 +41,16 @@
                                         <action selector="startOver:" destination="9lt-7F-HSU" id="wfe-9s-C1X"/>
                                     </connections>
                                 </tapGestureRecognizer>
+                                <swipeGestureRecognizer direction="2" id="XtH-eY-EjV">
+                                    <connections>
+                                        <action selector="handleGoLeft:" destination="9lt-7F-HSU" id="zuY-93-8oU"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <swipeGestureRecognizer id="3eU-6c-9Fb">
+                                    <connections>
+                                        <action selector="handelGoRight:" destination="9lt-7F-HSU" id="aKs-VH-X3H"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
                             </gestureRecognizers>
                         </spriteKitScene>
                     </items>
