@@ -9,12 +9,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--wrist-racer-home-screen-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc">
+                <controller backgroundImage="wrist-racer-home-screen" id="AgC-eL-Hgc">
                     <items>
-                        <label width="116" height="56" alignment="center" text="Wrist Racer" textAlignment="center" id="PwO-gS-ras"/>
                         <button width="1" alignment="left" verticalAlignment="bottom" title="Start Game" id="wte-f5-35N">
                             <connections>
                                 <segue destination="9lt-7F-HSU" kind="modal" id="fo0-9P-kXk"/>
