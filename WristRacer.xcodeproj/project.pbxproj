@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA996F5A1FE1AD3100FDF6D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA996F591FE1AD3100FDF6D5 /* Assets.xcassets */; };
 		AAE79AFE1F8E9E4700FE0078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79AFD1F8E9E4700FE0078 /* AppDelegate.swift */; };
 		AAE79B001F8E9E4700FE0078 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AAE79AFF1F8E9E4700FE0078 /* GameScene.sks */; };
 		AAE79B021F8E9E4700FE0078 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B011F8E9E4700FE0078 /* Actions.sks */; };
@@ -18,13 +19,12 @@
 		AAE79B1B1F8E9E6100FE0078 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B191F8E9E6100FE0078 /* Interface.storyboard */; };
 		AAE79B1D1F8E9E6100FE0078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B1C1F8E9E6100FE0078 /* Assets.xcassets */; };
 		AAE79B241F8E9E6100FE0078 /* WWR Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AAE79B231F8E9E6100FE0078 /* WWR Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AAE79B291F8E9E6100FE0078 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79B281F8E9E6100FE0078 /* InterfaceController.swift */; };
+		AAE79B291F8E9E6100FE0078 /* GameInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79B281F8E9E6100FE0078 /* GameInterfaceController.swift */; };
 		AAE79B2B1F8E9E6100FE0078 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B2A1F8E9E6100FE0078 /* GameScene.sks */; };
 		AAE79B2D1F8E9E6100FE0078 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79B2C1F8E9E6100FE0078 /* GameScene.swift */; };
 		AAE79B2F1F8E9E6100FE0078 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79B2E1F8E9E6100FE0078 /* ExtensionDelegate.swift */; };
 		AAE79B311F8E9E6100FE0078 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79B301F8E9E6100FE0078 /* NotificationController.swift */; };
 		AAE79B331F8E9E6100FE0078 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79B321F8E9E6100FE0078 /* ComplicationController.swift */; };
-		AAE79B351F8E9E6100FE0078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAE79B341F8E9E6100FE0078 /* Assets.xcassets */; };
 		AAE79B3A1F8E9E6100FE0078 /* WWR.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AAE79B171F8E9E6100FE0078 /* WWR.app */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA996F591FE1AD3100FDF6D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAE79AFA1F8E9E4700FE0078 /* WristRacer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WristRacer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE79AFD1F8E9E4700FE0078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAE79AFF1F8E9E4700FE0078 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -86,13 +87,12 @@
 		AAE79B1C1F8E9E6100FE0078 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAE79B1E1F8E9E6100FE0078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAE79B231F8E9E6100FE0078 /* WWR Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WWR Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAE79B281F8E9E6100FE0078 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		AAE79B281F8E9E6100FE0078 /* GameInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInterfaceController.swift; sourceTree = "<group>"; };
 		AAE79B2A1F8E9E6100FE0078 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		AAE79B2C1F8E9E6100FE0078 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		AAE79B2E1F8E9E6100FE0078 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		AAE79B301F8E9E6100FE0078 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		AAE79B321F8E9E6100FE0078 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
-		AAE79B341F8E9E6100FE0078 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAE79B361F8E9E6100FE0078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAE79B371F8E9E6100FE0078 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,13 +164,13 @@
 		AAE79B271F8E9E6100FE0078 /* WWR Extension */ = {
 			isa = PBXGroup;
 			children = (
-				AAE79B281F8E9E6100FE0078 /* InterfaceController.swift */,
+				AA996F591FE1AD3100FDF6D5 /* Assets.xcassets */,
+				AAE79B281F8E9E6100FE0078 /* GameInterfaceController.swift */,
 				AAE79B2A1F8E9E6100FE0078 /* GameScene.sks */,
 				AAE79B2C1F8E9E6100FE0078 /* GameScene.swift */,
 				AAE79B2E1F8E9E6100FE0078 /* ExtensionDelegate.swift */,
 				AAE79B301F8E9E6100FE0078 /* NotificationController.swift */,
 				AAE79B321F8E9E6100FE0078 /* ComplicationController.swift */,
-				AAE79B341F8E9E6100FE0078 /* Assets.xcassets */,
 				AAE79B361F8E9E6100FE0078 /* Info.plist */,
 				AAE79B371F8E9E6100FE0078 /* PushNotificationPayload.apns */,
 			);
@@ -303,7 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAE79B351F8E9E6100FE0078 /* Assets.xcassets in Resources */,
+				AA996F5A1FE1AD3100FDF6D5 /* Assets.xcassets in Resources */,
 				AAE79B2B1F8E9E6100FE0078 /* GameScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,7 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAE79B2D1F8E9E6100FE0078 /* GameScene.swift in Sources */,
-				AAE79B291F8E9E6100FE0078 /* InterfaceController.swift in Sources */,
+				AAE79B291F8E9E6100FE0078 /* GameInterfaceController.swift in Sources */,
 				AAE79B331F8E9E6100FE0078 /* ComplicationController.swift in Sources */,
 				AAE79B311F8E9E6100FE0078 /* NotificationController.swift in Sources */,
 				AAE79B2F1F8E9E6100FE0078 /* ExtensionDelegate.swift in Sources */,

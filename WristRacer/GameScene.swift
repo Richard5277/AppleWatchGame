@@ -11,6 +11,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    // Richard
+    
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
