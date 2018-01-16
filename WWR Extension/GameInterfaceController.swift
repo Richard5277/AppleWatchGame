@@ -8,6 +8,7 @@
 
 import WatchKit
 import Foundation
+import GameKit
 
 class GameInterfaceController: WKInterfaceController, WKCrownDelegate {
 
@@ -70,10 +71,31 @@ class GameInterfaceController: WKInterfaceController, WKCrownDelegate {
         
         crownSequencer.delegate = self
         
-        
     }
+
+    @IBAction func handleGoLeft(_ sender: Any) {
+        scene?.player?.run((scene?.zAction)!)
+        scene?.player?.position.x -= CGFloat(((self.scene?.frame.width)!-20) / 3)
+        scene?.player?.zRotation += CGFloat(1)
+    }
+    
+    @IBAction func handelGoRight(_ sender: Any) {
+        scene?.player?.run((scene?.zAction)!)
+        scene?.player?.position.x += CGFloat(((self.scene?.frame.width)!-20) / 3)
+        scene?.player?.zRotation -= CGFloat(1)
+    }
+    
     @IBAction func startOver(_ sender: Any) {
         print("😈 😈 tap tap")
+//
+//        if let tapGesture = sender as? WKTapGestureRecognizer {
+//            print(tapGesture)
+//            if tapGesture.numberOfTapsRequired == 1 {
+//                // Restart the game on single tap only if presenting congratulation screen.
+//                // ctrl -> left
+//            }
+//        }
+        
         self.dismiss()
         self.dismissAddPassesController()
     }
@@ -107,6 +129,8 @@ class GameInterfaceController: WKInterfaceController, WKCrownDelegate {
     func crownDidBecomeIdle(_ crownSequencer: WKCrownSequencer?) {
         scene?.player?.run((scene?.zAction)!)
     }
+    
+    
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user

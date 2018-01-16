@@ -46,9 +46,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         setUpLife()
         
+//        setUpControls()
+        
         Timer.scheduledTimer(timeInterval: TimeInterval(0.5), target: self, selector: #selector(createRoadStrips), userInfo: nil, repeats: true)
         
         Timer.scheduledTimer(timeInterval: TimeInterval(generateRandomNumber(min: 3, max: 5)), target: self, selector: #selector(createObstacles), userInfo: nil, repeats: true)
+        
+        
     }
     
     func setUp() {
@@ -227,6 +231,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func addTarget(_ target: Any, action: Selector){
+        if target as! SKSpriteNode == childNode(withName: "leftControl") {
+            print("😈  ============ go left")
+        }
+    }
+    
     func didBegin(_ contact: SKPhysicsContact) {
         
         guard let nodeA = contact.bodyA.node else { return }
@@ -301,6 +311,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func setUpControls() {
+        
+        let leftCrl = childNode(withName: "leftControl") as! SKSpriteNode
+        leftCrl.name = "leftCrl"
+        
+        let rightCrl = childNode(withName: "rightControl") as! SKSpriteNode
+        rightCrl.name = "rightCrl"
+        
+    }
+        
     func pauseGame() {
         self.ballSpeed = 0
         self.traficSpeed = 0
