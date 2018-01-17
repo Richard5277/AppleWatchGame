@@ -19,7 +19,6 @@
                                 <segue destination="9lt-7F-HSU" kind="modal" id="fo0-9P-kXk"/>
                             </connections>
                         </button>
-                        <button width="1" alignment="left" verticalAlignment="bottom" title="Garage" id="6rA-SR-yQh"/>
                     </items>
                     <connections>
                         <outlet property="skInterface" destination="eh2-bW-rMT" id="Wme-JX-I9n"/>

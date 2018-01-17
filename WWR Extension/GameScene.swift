@@ -154,6 +154,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //random number to determine if traffic is in lane 1, 2, or 3
         let randLane = arc4random_uniform(4)
         
+
         var obstacles = ["Boulder", "broken-tree", "lava1", "oilspill", "poopoo-trash-ariel"]
         let randObstacle = Int(arc4random_uniform(5))
         
@@ -371,8 +372,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func startOver() {
         print("start over")
     }
-    
-    
     
 }
 
