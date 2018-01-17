@@ -14,7 +14,8 @@
             <objects>
                 <controller backgroundImage="wrist-racer-home-screen" id="AgC-eL-Hgc">
                     <items>
-                        <button width="1" alignment="left" verticalAlignment="bottom" title="Start Game" id="wte-f5-35N">
+                        <button width="1" height="0.40000000000000002" alignment="left" verticalAlignment="bottom" backgroundImage="PLAY-BUTTON" id="wte-f5-35N">
+                            <fontDescription key="font" type="system" pointSize="12"/>
                             <connections>
                                 <segue destination="9lt-7F-HSU" kind="modal" id="fo0-9P-kXk"/>
                             </connections>
