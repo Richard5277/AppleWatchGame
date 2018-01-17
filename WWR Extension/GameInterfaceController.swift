@@ -60,7 +60,7 @@ class GameInterfaceController: WKInterfaceController, WKCrownDelegate {
         }
         
         // Set the scale mode to scale to fit the window
-        scene?.scaleMode = .aspectFill
+        scene?.scaleMode = .aspectFit
         scene?.name = "GameScene"
         
         // Present the scene
