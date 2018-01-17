@@ -27,7 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lives: [SKSpriteNode]?
     
     // speed
-    var traficSpeed: CGFloat = 30
+    var traficSpeed: CGFloat = 15
     var ballSpeed: CGFloat = 1
     
     // game start over layer
@@ -52,6 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         Timer.scheduledTimer(timeInterval: TimeInterval(generateRandomNumber(min: 3, max: 5)), target: self, selector: #selector(createObstacles), userInfo: nil, repeats: true)
         
+        Timer.scheduledTimer(timeInterval: TimeInterval(7), target: self, selector: #selector(increaseSpeed), userInfo: nil, repeats: true)
         
     }
     
@@ -89,11 +90,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(player!)
         
         distLabel = SKLabelNode()
-        distLabel?.text = "0km"
+        distLabel?.text = "0"
         distLabel?.fontName = "HelveticaNeue-Bold"
         distLabel?.fontSize = 11
         distLabel?.fontColor = SKColor.white
-        distLabel?.position = CGPoint(x: frame.midX, y: -(frame.height / 2) + 5)
+        distLabel?.position = CGPoint(x: frame.midX + 2, y: -(frame.height / 2) + 5)
         distLabel?.alpha = 0.8
         distLabel?.zPosition = 10
         
@@ -153,8 +154,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //random number to determine if traffic is in lane 1, 2, or 3
         let randLane = arc4random_uniform(4)
         
-        var obstacles = ["Boulder", "tree", "trash"]
-        let randObstacle = Int(arc4random_uniform(3))
+
+        var obstacles = ["Boulder", "broken-tree", "lava1", "oilspill", "poopoo-trash-ariel"]
+        let randObstacle = Int(arc4random_uniform(5))
         
         ball = SKSpriteNode(imageNamed: obstacles[randObstacle])
         ball?.name = "ball"
@@ -222,6 +224,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
     }
     
+    @objc func increaseSpeed() {
+        traficSpeed += 3
+        ballSpeed += 1.5
+    }
+    
     func removeItems() {
         for child in self.children {
             if child.position.y < -self.size.height - 20 {
@@ -275,8 +282,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func updateDistance() {
-        let distText = round(startTime.timeIntervalSinceNow, toNearest: 0.01)
-        distLabel?.text = "\(-distText) km"
+        let distText = Int(round(startTime.timeIntervalSinceNow, toNearest: 1) / 5)
+        distLabel?.text = "\(-distText)"
     }
     
     func round(_ value: Double, toNearest: Double) -> Double {
