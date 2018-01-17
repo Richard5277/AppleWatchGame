@@ -155,7 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let randLane = arc4random_uniform(4)
         
 
-        var obstacles = ["Boulder", "broken-tree", "lava1", "oilspill", "poopoo-trash-ariel"]
+        var obstacles = ["Boulder", "broken-tree", "poopoo-trash-ariel"]
         let randObstacle = Int(arc4random_uniform(5))
         
         ball = SKSpriteNode(imageNamed: obstacles[randObstacle])
