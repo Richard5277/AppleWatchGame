@@ -78,7 +78,7 @@
             <objects>
                 <controller id="4sK-HA-Art" customClass="NotificationController" customModule="WWR" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="468" y="643"/>
+            <point key="canvasLocation" x="495" y="643"/>
         </scene>
     </scenes>
 </document>
